@@ -13,7 +13,7 @@
         
     </header>
     <section>
-        <form name="ingreso-datos" id="ingreso-datos">
+        <form name="ingreso-datos" onsubmit="return false" id="ingreso-datos">
             <input type="text" name="primer-nombre" placeholder="Primer nombre" id="primer-nombre" />
             <input type="text" name="segundo-nombre" placeholder="Segundo nombre" id="segundo-nombre" />
             <input type="text" name="apellido" placeholder="Apellido" id="apellido" />
@@ -21,6 +21,9 @@
             <input type="submit" name="Enviar" id="boton-enviar">
         </form>
     </section>
+        <div id="resultado">
+
+        </div>
     <script src='tarea2.js'></script>
 </body>
 </html>
