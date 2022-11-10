@@ -16,3 +16,5 @@ Ejemplo form:
   <div id="resultado">Hola</div>
 *
 * */
+const $h1 = document.querySelector("#titulos");
+$h1.innerText = "Bienvenido"
