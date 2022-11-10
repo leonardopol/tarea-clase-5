@@ -17,7 +17,7 @@ Ejemplo form:
 *
 * */
 const $h1 = document.querySelector("#titulos");
-$h1.innerText = "Bienvenido"
+$h1.innerText = "Bienvenido\n\n"
 
 document.querySelector("#ingreso-datos #boton-enviar").onclick = function(){
     const $primerNombre = document.querySelector("#primer-nombre").value;
@@ -26,6 +26,6 @@ document.querySelector("#ingreso-datos #boton-enviar").onclick = function(){
     const $edad = Number(document.querySelector("#edad").value);
 
     document.querySelector("#resultado").innerText = `\n\nNombres: ${$primerNombre} ${$segundoNombre} \nApellido: ${$apellido}\nEdad: ${$edad}`;
-    
+    $h1.innerText = `Bienvenido ${$primerNombre}!!!\n\n`
 
 }
