@@ -18,3 +18,14 @@ Ejemplo form:
 * */
 const $h1 = document.querySelector("#titulos");
 $h1.innerText = "Bienvenido"
+
+document.querySelector("#ingreso-datos #boton-enviar").onclick = function(){
+    const $primerNombre = document.querySelector("#primer-nombre").value;
+    const $segundoNombre = document.querySelector("#segundo-nombre").value;
+    const $apellido = document.querySelector("#apellido").value;
+    const $edad = Number(document.querySelector("#edad").value);
+
+    document.querySelector("#resultado").innerText = `\n\nNombres: ${$primerNombre} ${$segundoNombre} \nApellido: ${$apellido}\nEdad: ${$edad}`;
+    
+
+}
