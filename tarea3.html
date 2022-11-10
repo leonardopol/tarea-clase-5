@@ -13,12 +13,13 @@
         <h1>Calcular tiempo total de videos r/argentina-programa</h1>
     </header>
     <section>
-        <form name="ingreso-datos" id="ingreso-datos">
+        <form name="ingreso-datos" onsubmit="return false" id="ingreso-datos">
             <input type="number" name="video" placeholder="numero de video" id="numero-video">
             <input type="number" name="horas" placeholder="horas" id="horas">
             <input type="number" name="minutos" placeholder="minutos" id="minutos">
             <input type="number" name="segundos" placeholder="segundos" id="segundos">
-            <input type="submit" name="calcular" value="Calcular" id="boton-calcular">
+            <input type="submit" name="agregar" value="Agregar" id="boton-agregar">
+            <input type="submit" name="calcular" value="Calcular tiempo total" id="boton-calcular">
         </form>
     </section>
     <script src='tarea3.js'></script>
