@@ -5,3 +5,67 @@
 // 2. obtener el número más pequeño y mostrarlo en un <em> pre-creado con el texto "El número más pequeño es..."
 // 3. obtener el número más grande y mostrarlo en un <em> pre-creado con el texto "El número más grande es..."
 // 4. obtener el número que más se repite y mostrarlo en un <em> pre-creado con el texto "El número más frecuente es..."
+
+function crearLista(numeros){
+
+    for(let i = 0; i < numeros.length; i++){
+    nuevoLi[i] = document.createElement("li");
+    textoLi[i] = document.createTextNode(`${numeros[i]}`);
+    nuevoLi[i].appendChild(textoLi[i]);
+    nuevoOl.appendChild(nuevoLi[i]);
+    }
+}
+
+function convertirLista(lista){
+    
+    let RegExp = /(\d+)/g; //lo consegui de internet
+    let listaNumeros = lista.match(RegExp);
+    return listaNumeros;
+}
+
+let suma = 0;
+function calcularPromedio(obtenerLista){
+    for(let i = 0; i < obtenerLista.length; i++){
+    suma = suma + Number(obtenerLista[i]);
+    }
+    return suma / obtenerLista.length;
+}
+
+function visualizarPromedio(promedio){
+    const muestraPromedio = document.querySelector("#em1");
+    muestraPromedio.textContent = `El promedio es: ${promedio}`;
+}
+
+function visualizarPequenio(obtenerLista){
+    let peque = 1000000000000;
+    const pequenio = document.querySelector("#em2");
+    for(let i = 0; i < obtenerLista.length; i++){
+        if(obtenerLista[i] < peque){
+            peque = obtenerLista[i];
+        }
+    }
+    pequenio.textContent = `El mas pequeño es: ${peque}`;
+}
+
+const nodoPagina = document.querySelector("body");
+const nuevoDiv = document.createElement("div");
+nuevoDiv.id = "#principal";
+const nuevoOl = document.createElement("ol");
+nuevoOl.id = "#lista";
+
+const numeros = [680,235,121,400,235];
+const nuevoLi = [];
+const textoLi = [];
+
+crearLista(numeros);
+
+nuevoDiv.appendChild(nuevoOl);
+nodoPagina.appendChild(nuevoDiv);
+
+let lista = document.querySelector("ol").innerText;
+
+const obtenerLista = convertirLista(lista);
+const promedio = calcularPromedio(obtenerLista);
+const mostrarPromedio = visualizarPromedio(promedio);
+const mostrarPequenio = visualizarPequenio(obtenerLista);
+
