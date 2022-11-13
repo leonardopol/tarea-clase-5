@@ -9,10 +9,10 @@
 function crearLista(numeros){
 
     for(let i = 0; i < numeros.length; i++){
-    nuevoLi[i] = document.createElement("li");
-    textoLi[i] = document.createTextNode(`${numeros[i]}`);
-    nuevoLi[i].appendChild(textoLi[i]);
-    nuevoOl.appendChild(nuevoLi[i]);
+        nuevoLi[i] = document.createElement("li");
+        textoLi[i] = document.createTextNode(`${numeros[i]}`);
+        nuevoLi[i].appendChild(textoLi[i]);
+        nuevoOl.appendChild(nuevoLi[i]);
     }
 }
 
@@ -25,9 +25,9 @@ function convertirLista(lista){
 
 let suma = 0;
 function calcularPromedio(obtenerLista){
-    for(let i = 0; i < obtenerLista.length; i++){
-    suma = suma + Number(obtenerLista[i]);
-    }
+        for(let i = 0; i < obtenerLista.length; i++){
+        suma = suma + Number(obtenerLista[i]);
+        }
     return suma / obtenerLista.length;
 }
 
@@ -47,20 +47,31 @@ function visualizarPequenio(obtenerLista){
     pequenio.textContent = `El mas pequeño es: ${peque}`;
 }
 
+function visualizarGrande(obtenerLista){
+    let big = -10000000000000;
+    const grande = document.querySelector("#em3");
+    for(let i = 0; i < obtenerLista.length; i++){
+        if(obtenerLista[i] > big){
+            big = obtenerLista[i];
+        }
+    }
+    grande.textContent = `El mas grande es: ${big}`;
+}
+
 const nodoPagina = document.querySelector("body");
-const nuevoDiv = document.createElement("div");
-nuevoDiv.id = "#principal";
+const nuevoDivPrincipal = document.createElement("div");
+nuevoDivPrincipal.id = "#principal";
 const nuevoOl = document.createElement("ol");
 nuevoOl.id = "#lista";
 
-const numeros = [680,235,121,400,235];
+const numeros = [680,235,121,400,235,128,235];
 const nuevoLi = [];
 const textoLi = [];
 
 crearLista(numeros);
 
-nuevoDiv.appendChild(nuevoOl);
-nodoPagina.appendChild(nuevoDiv);
+nuevoDivPrincipal.appendChild(nuevoOl);
+nodoPagina.appendChild(nuevoDivPrincipal);
 
 let lista = document.querySelector("ol").innerText;
 
@@ -68,4 +79,5 @@ const obtenerLista = convertirLista(lista);
 const promedio = calcularPromedio(obtenerLista);
 const mostrarPromedio = visualizarPromedio(promedio);
 const mostrarPequenio = visualizarPequenio(obtenerLista);
+const mostrarGrande = visualizarGrande(obtenerLista);
 
