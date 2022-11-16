@@ -90,6 +90,9 @@ function visualizarMasRepetido(obtenerLista){
 const nodoPagina = document.querySelector("body");
 const nuevoDivPrincipal = document.createElement("div");
 nuevoDivPrincipal.id = "#principal";
+const nuevoParrafo = document.createElement("p");
+nuevoParrafo.id = "#titulo-numeros";
+const nuevoTextoParrafo = document.createTextNode("Numeros Aleatoreos:");
 const nuevoOl = document.createElement("ol");
 nuevoOl.id = "#lista";
 
@@ -99,6 +102,8 @@ const textoLi = [];
 
 crearLista(numeros);
 
+nuevoDivPrincipal.appendChild(nuevoParrafo);
+nuevoParrafo.appendChild(nuevoTextoParrafo);
 nuevoDivPrincipal.appendChild(nuevoOl);
 nodoPagina.appendChild(nuevoDivPrincipal);
 
