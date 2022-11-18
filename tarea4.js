@@ -88,10 +88,8 @@ function calcularMasRepetido(obtenerLista){
         }
         if(guardarConteo[i] > maximo){
             maximo = guardarConteo[i];
-            return guardarNumero[i];
-            
+            return guardarNumero[i];   
         }
-         
     }
 }
 
@@ -127,7 +125,6 @@ const promedio = calcularPromedio(obtenerLista);
 const pequenio = calcularPequenio(obtenerLista);
 const grande = calcularGrande(obtenerLista);
 const masRepetido = calcularMasRepetido(obtenerLista);
-console.log(masRepetido);
 const mostrarPromedio = visualizarPromedio(promedio);
 const mostrarPequenio = visualizarPequenio(pequenio);
 const mostrarGrande = visualizarGrande(grande);
