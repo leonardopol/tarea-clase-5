@@ -9,10 +9,10 @@
 function crearLista(numeros){
 
     for(let i = 0; i < numeros.length; i++){
-        nuevoLi[i] = document.createElement("li");
-        textoLi[i] = document.createTextNode(`${numeros[i]}`);
-        nuevoLi[i].appendChild(textoLi[i]);
-        nuevoOl.appendChild(nuevoLi[i]);
+        $nuevoLi[i] = document.createElement("li");
+        $textoLi[i] = document.createTextNode(`${numeros[i]}`);
+        $nuevoLi[i].appendChild($textoLi[i]);
+        $nuevoOl.appendChild($nuevoLi[i]);
     }
 }
 
@@ -23,8 +23,8 @@ function convertirLista(lista){
     return listaNumeros;
 }
 
-let suma = 0;
 function calcularPromedio(obtenerLista){
+        let suma = 0;
         for(let i = 0; i < obtenerLista.length; i++){
         suma = suma + Number(obtenerLista[i]);
         }
@@ -32,40 +32,47 @@ function calcularPromedio(obtenerLista){
 }
 
 function visualizarPromedio(promedio){
-    const muestraPromedio = document.querySelector("#em1");
-    muestraPromedio.textContent = `El promedio es: ${promedio}`;
+    const $muestraPromedio = document.querySelector("#em1");
+    $muestraPromedio.textContent = `El promedio es: ${promedio}`;
 }
 
-function visualizarPequenio(obtenerLista){
+function calcularPequenio(obtenerLista){
     let peque = 1000000000000;
-    const pequenio = document.querySelector("#em2");
     for(let i = 0; i < obtenerLista.length; i++){
         if(obtenerLista[i] < peque){
             peque = obtenerLista[i];
         }
     }
-    pequenio.textContent = `El mas pequeño es: ${peque}`;
+    return peque;
 }
 
-function visualizarGrande(obtenerLista){
+function visualizarPequenio(pequenio){
+    const $pequenio = document.querySelector("#em2");
+    $pequenio.textContent = `El mas pequeño es: ${pequenio}`;
+}
+
+function calcularGrande(obtenerLista){
     let big = -10000000000000;
-    const grande = document.querySelector("#em3");
     for(let i = 0; i < obtenerLista.length; i++){
         if(obtenerLista[i] > big){
             big = obtenerLista[i];
         }
     }
-    grande.textContent = `El mas grande es: ${big}`;
+    return big;
 }
 
-function visualizarMasRepetido(obtenerLista){
+function visualizarGrande(grande){
+    const $grande = document.querySelector("#em3");
+    $grande.textContent = `El mas grande es: ${grande}`;
+}
+
+function calcularMasRepetido(obtenerLista){
 
     let conservar = 0;
     let maximo = 1;
     let guardarNumero = [];
     let guardarConteo = [];
-    const masRepetido = document.querySelector("#em4");
-
+    
     for(let i = 0; i < obtenerLista.length; i++){
         let contador = 0;
         for(let j = 0; j < obtenerLista.length; j++){
@@ -81,38 +88,48 @@ function visualizarMasRepetido(obtenerLista){
         }
         if(guardarConteo[i] > maximo){
             maximo = guardarConteo[i];
-            masRepetido.textContent = `El mas repetido es: ${guardarNumero[i]}`;
+            return guardarNumero[i];
+            
         }
          
     }
 }
 
-const nodoPagina = document.querySelector("body");
-const nuevoDivPrincipal = document.createElement("div");
-nuevoDivPrincipal.id = "#principal";
-const nuevoParrafo = document.createElement("p");
-nuevoParrafo.id = "#titulo-numeros";
-const nuevoTextoParrafo = document.createTextNode("Numeros Aleatoreos:");
-const nuevoOl = document.createElement("ol");
-nuevoOl.id = "#lista";
+function visualizarMasRepetido(masRepetido){
+    const $masRepetido = document.querySelector("#em4");
+    $masRepetido.textContent = `El mas repetido es: ${masRepetido}`;
+}
 
-const numeros = [680,235,121,400,235,128,235,24,680,235,121];
-const nuevoLi = [];
-const textoLi = [];
+const numeros = [28,14,33,87,45,61,73,54,33,12,33];
+const $nuevoLi = [];
+const $textoLi = [];
+
+const $nodoSeccion = document.querySelector("section");
+const $nuevoDivPrincipal = document.createElement("div");
+const $nuevoParrafo = document.createElement("p");
+const $nuevoTextoParrafo = document.createTextNode("Numeros:");
+const $nuevoOl = document.createElement("ol");
+$nuevoDivPrincipal.id = "div-numeros";
+$nuevoParrafo.id = "titulo-numeros";
+$nuevoOl.id = "lista";
+
+$nuevoDivPrincipal.appendChild($nuevoParrafo);
+$nuevoParrafo.appendChild($nuevoTextoParrafo);
+$nuevoDivPrincipal.appendChild($nuevoOl);
+$nodoSeccion.appendChild($nuevoDivPrincipal);
 
 crearLista(numeros);
 
-nuevoDivPrincipal.appendChild(nuevoParrafo);
-nuevoParrafo.appendChild(nuevoTextoParrafo);
-nuevoDivPrincipal.appendChild(nuevoOl);
-nodoPagina.appendChild(nuevoDivPrincipal);
+const $lista = document.querySelector("ol").innerText;
 
-const lista = document.querySelector("ol").innerText;
-
-const obtenerLista = convertirLista(lista);
+const obtenerLista = convertirLista($lista);
 const promedio = calcularPromedio(obtenerLista);
+const pequenio = calcularPequenio(obtenerLista);
+const grande = calcularGrande(obtenerLista);
+const masRepetido = calcularMasRepetido(obtenerLista);
+console.log(masRepetido);
 const mostrarPromedio = visualizarPromedio(promedio);
-const mostrarPequenio = visualizarPequenio(obtenerLista);
-const mostrarGrande = visualizarGrande(obtenerLista);
-visualizarMasRepetido(obtenerLista);
+const mostrarPequenio = visualizarPequenio(pequenio);
+const mostrarGrande = visualizarGrande(grande);
+const mostrarMasRepetido = visualizarMasRepetido(masRepetido);
 
